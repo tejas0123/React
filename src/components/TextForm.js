@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
+
 export default function TextForm(props){
     const [text, setText] = useState('');
-
     const handleOnChange = (event)=>{
         setText(event.target.value);
     }
@@ -21,9 +21,13 @@ export default function TextForm(props){
         let changedText = '';
         setText(changedText);
     }
+
+    let myStyle = {
+        
+    }
     return(
        <>
-        <div className="container">
+        <div className="container" style={myStyle}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 <textarea className="form-control" value = {text} id="exampleFormControlTextarea1" rows="8" onChange={handleOnChange}></textarea>
