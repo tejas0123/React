@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import PropTypes from 'prop-types'
 
-let darkStyle = {
-  backgroundColor:"black",
-  color : "white",
-};
-let lightStyle = {
-  backgroundColor:"white",
-  color : "black",
-};
+// let darkStyle = {
+//   backgroundColor:"black",
+//   color : "white",
+// };
+// let lightStyle = {
+//   backgroundColor:"white",
+//   color : "black",
+// };
 export default function Navbar(props) {
-  const [mode, setMode] = useState(lightStyle);
-  const onModeChange = ()=>{
-    if(mode === lightStyle){
-      setMode(darkStyle);
-    }
-    else{
-      setMode(lightStyle);
+  // const [btnText, setBtnText] = useState("The Dark Side");
+  // const onButtonChange = ()=>{
+  //   if(mode === lightStyle){
+  //     setMode(darkStyle);
+  //   }
+  //   else{
+  //     setMode(lightStyle);
       
-    }
-  }
+  //   }
+  // }
   return (
-    <nav className="navbar navbar-expand-lg" style={mode}>
+    <div>
+      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <a className="navbar-brand" href="/">{props.title}</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -38,12 +39,13 @@ export default function Navbar(props) {
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            <button className="btn btn-primary my-2 my-sm-0 mx-2" type="submit">Search</button>
           </form> 
         </div>
-        <button className="btn btn-dark my-2 my-sm-0 mx-2" onClick={onModeChange}>Enable Dark Mode</button>
-
+        <button type="button" class={`btn btn-${props.mode==='light' ? 'dark':'light'}`} onClick={props.toggleMode}>{`Go ${props.mode === 'light' ? 'Dark':'Light'}`}</button>
       </nav>
+      
+    </div>
   )
 }
 

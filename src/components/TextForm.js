@@ -22,15 +22,20 @@ export default function TextForm(props){
         setText(changedText);
     }
 
-    let myStyle = {
-        
+    let darkStyle = {
+        background:"#212121",
+        color:"white"
+    }
+    let lightStyle = {
+        background:"white",
+        color:"black"
     }
     return(
        <>
-        <div className="container" style={myStyle}>
+        <div className="container" >
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control" value = {text} id="exampleFormControlTextarea1" rows="8" onChange={handleOnChange}></textarea>
+                <textarea className="form-control" value = {text} id="exampleFormControlTextarea1" rows="8" onChange={handleOnChange} style = {props.mode === 'light' ? lightStyle:darkStyle}></textarea>
             </div>
             <button type="button" className="btn btn-primary" onClick = {handleOnUpClick}>Convert to uppercase</button>
             <button type="button" className="btn btn-primary mx-1"onClick = {handleOnLowClick}>Convert to lowercase</button>
